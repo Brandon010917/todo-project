@@ -12,11 +12,12 @@ const App = () => {
   const [todos, setTodos] = useState([]);
 
   // Set base url axios
-  axios.defaults.baseURL = "http://localhost:4000/api/v1/todos";
+  axios.defaults.baseURL =
+    "https://todo-project-node.herokuapp.com/api/v1/todos";
 
   const addTodo = async (todo) => {
     await axios.post("", {
-      content: todo.content,
+      content: todo.content
     }); // req.body.content
 
     setTodos((prevState) => [...prevState, todo]);
@@ -33,7 +34,7 @@ const App = () => {
 
   const editTodo = async (id, newContent) => {
     await axios.patch(`/${id}`, {
-      content: newContent,
+      content: newContent
     });
 
     setTodos((prevState) => {
