@@ -13,7 +13,7 @@ const App = () => {
 
   // Set base url axios
   axios.defaults.baseURL =
-    "https://todo-project-node.herokuapp.com/api/v1/todos";
+    "https://todo-project-full-stack.herokuapp.com/api/v1/todos";
 
   const addTodo = async (todo) => {
     await axios.post("", {
