@@ -59,6 +59,14 @@ exports.updateToDo = async (req, res) => {
 
     const todo = await ToDo.findOne({ where: { id, status: 'active' } });
 
+    if (!todo) {
+      res.status(404).json({
+        status: 'error',
+        message: 'No ToDo found with the given id'
+      });
+      return;
+    }
+
     await todo.update({ ...data });
 
     res.status(204).json({ status: 'success' });
@@ -72,6 +80,14 @@ exports.deleteToDo = async (req, res) => {
     const { id } = req.params;
 
     const todo = await ToDo.findOne({ where: { id, status: 'active' } });
+
+    if (!todo) {
+      res.status(404).json({
+        status: 'error',
+        message: 'No ToDo found with the given id'
+      });
+      return;
+    }
 
     await todo.update({ status: 'deleted' });
 
